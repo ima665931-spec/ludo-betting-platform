@@ -20,10 +20,29 @@ const UserSchema = new Schema({
         trim: true,
         lowercase: true,
     },
+    phone: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+    },
     password: {
         type: String,
         required: true,
         minlength: 6,
+    },
+    isEmailVerified: {
+        type: Boolean,
+        default: false,
+    },
+    // OTP fields
+    emailOTP: {
+        type: String,
+        default: null,
+    },
+    otpExpires: {
+        type: Date,
+        default: null,
     },
     avatar: {
         type: String,
@@ -31,8 +50,12 @@ const UserSchema = new Schema({
     },
     coins: {
         type: Number,
-        default: 1000, // starting balance for new users
+        default: 0, // 0 until verified, then 1000 on first login
         min: 0,
+    },
+    signupBonusClaimed: {
+        type: Boolean,
+        default: false,
     },
     gamesPlayed: {
         type: Number,
@@ -89,6 +112,31 @@ UserSchema.methods.generateToken = function () {
     );
 };
 
+// Generate OTP
+UserSchema.methods.generateOTP = function () {
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    this.emailOTP = otp;
+    this.otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 min expiry
+    return otp;
+};
+
+// Verify OTP
+UserSchema.methods.verifyOTP = function (candidateOTP) {
+    if (!this.emailOTP || !this.otpExpires) return false;
+    if (Date.now() > this.otpExpires.getTime()) return false;
+    if (this.emailOTP !== candidateOTP) return false;
+    // Clear OTP and mark verified
+    this.emailOTP = null;
+    this.otpExpires = null;
+    this.isEmailVerified = true;
+    // Claim signup bonus on verification
+    if (!this.signupBonusClaimed) {
+        this.coins = 1000;
+        this.signupBonusClaimed = true;
+    }
+    return true;
+};
+
 // Claim daily bonus
 UserSchema.methods.claimDailyBonus = function () {
     const now = new Date();
@@ -104,7 +152,7 @@ UserSchema.methods.claimDailyBonus = function () {
     return { success: true, bonus, newBalance: this.coins };
 };
 
-// Deduct coins (for entry fee)
+// Deduct coins
 UserSchema.methods.deductCoins = function (amount) {
     if (this.coins < amount) {
         return { success: false, message: 'Insufficient coins' };
@@ -113,7 +161,7 @@ UserSchema.methods.deductCoins = function (amount) {
     return { success: true, newBalance: this.coins };
 };
 
-// Add coins (for winnings)
+// Add coins
 UserSchema.methods.addCoins = function (amount) {
     this.coins += amount;
     return { success: true, newBalance: this.coins };
