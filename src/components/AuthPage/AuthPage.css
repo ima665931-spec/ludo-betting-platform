@@ -111,3 +111,32 @@
     color: #27ae60;
     font-size: 0.9rem;
 }
+
+.otp-input {
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.auth-info {
+    color: #2980b9;
+    font-size: 0.85rem;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.auth-link {
+    margin-top: 12px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 100%;
+    padding: 8px;
+}
+
+.auth-link:hover {
+    color: #1a2a6c;
+}
