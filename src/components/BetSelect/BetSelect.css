@@ -1,0 +1,85 @@
+.betselect-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.betselect-card {
+    text-align: center;
+    padding: 40px;
+    max-width: 400px;
+}
+
+.search-spinner {
+    width: 80px;
+    height: 80px;
+    border: 6px solid rgba(255, 255, 255, 0.1);
+    border-top: 6px solid #f7971e;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.betselect-card h2 {
+    font-size: 1.5rem;
+    margin: 0 0 25px;
+}
+
+.stake-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.stake-icon-large {
+    font-size: 3rem;
+}
+
+.stake-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.stake-entry {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.stake-win {
+    font-size: 1.1rem;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.search-status {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 0 0 20px;
+}
+
+.cancel-btn {
+    padding: 12px 30px;
+    background: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #e74c3c;
+}
