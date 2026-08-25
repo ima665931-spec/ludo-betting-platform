@@ -1,0 +1,159 @@
+.home-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info h2 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.wallet-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.coin-icon {
+    font-size: 1.2rem;
+}
+
+.coin-amount {
+    font-size: 1.1rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.refresh-btn, .logout-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.refresh-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.logout-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.home-body {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.game-title {
+    font-size: 2.5rem;
+    margin: 20px 0 5px;
+}
+
+.game-subtitle {
+    color: #aaa;
+    margin: 0 0 30px;
+}
+
+.stake-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stake-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid;
+    border-radius: 15px;
+    padding: 20px 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    transition: all 0.3s;
+    color: white;
+}
+
+.stake-card:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.stake-card:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.stake-icon {
+    font-size: 2rem;
+}
+
+.stake-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.stake-fee {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.stake-prize {
+    font-size: 0.8rem;
+    color: #2ecc71;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 25px;
+    border-radius: 12px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #aaa;
+}
